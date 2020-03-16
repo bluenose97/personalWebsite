@@ -1,6 +1,6 @@
 var ctx = document.querySelector("canvas").getContext("2d");
-var numberOfColumns = 300;
-var gridSize = 600;
+var numberOfColumns = 500;
+var gridSize = numberOfColumns * 2;
 
 // Initialise the grid
 var grid = new Array(gridSize).fill(0);
