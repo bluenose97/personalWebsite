@@ -19,6 +19,12 @@ for (var i = 0; i < neighbourStore.length; i++) {
 // Setup the GOL grid
 function initialiseGOL() {
     // Set starting pattern
+    for (var i = 0; i < grid.length; i++) {
+        for (var j = 0; j < grid[0].length; j++) {
+            grid[i][j] = Math.floor(Math.random() * 3);
+        }
+    }
+
     // grid[8][18] = 1;
     // grid[8][19] = 1;
     // grid[9][18] = 1;
@@ -55,12 +61,6 @@ function initialiseGOL() {
     // grid[42][17] = 1;
     // grid[43][16] = 1;
     // grid[43][17] = 1;
-
-    for (var i = 0; i < grid.length; i++) {
-        for (var j = 0; j < grid[0].length; j++) {
-            grid[i][j] = Math.floor(Math.random() * 3);
-        }
-    }
 }
 
 initialiseGOL();
