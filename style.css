@@ -26,7 +26,7 @@
           font-family: "Courier New", Courier, monospace;
           color: #ffffff;
           text-align: center;
-          background: rgba(0, 0, 0, 0.7);
+          background: rgba(0, 0, 0, 0.75);
           border-radius: 40px;
       }
 
@@ -35,26 +35,36 @@
           font-weight: 800;
           margin-bottom: 12px;
       }
-      .subtitle{
-        font-size: 20px;
-        font-weight: 500;
-        margin-top: 30px;
+
+      .subtitle {
+          font-size: 20px;
+          font-weight: 500;
+          margin-top: 30px;
       }
 
       .fab {
           font-size: 30px;
       }
 
-      a {
-        margin: 15px;
-        text-decoration: none;
-        font-size: 16px;
-        font-weight: 500;
-        transition: color 0.5s;
+      .projectLink {
+          display: inline-block;
+          margin-top: 5px;
+          margin-bottom: 5px;
+          text-decoration: none;
+          font-size: 16px;
+          font-weight: 600;
+          transition: color 0.5s;
       }
-      a:link, a:visited {
+
+      a {
+          margin: 10px;
+      }
+
+      a:link,
+      a:visited {
           color: white;
       }
+
       a:hover {
           color: #83b9ff;
       }
