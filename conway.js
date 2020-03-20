@@ -1,6 +1,7 @@
 var ctx = document.querySelector("canvas").getContext("2d");
 var numberOfColumns = 900;
 var gridSize = numberOfColumns * 2;
+var restartCounter = 0;
 
 // Initialise the grid
 var grid = new Array(gridSize).fill(0);
@@ -44,14 +45,68 @@ function getRandomColor() {
     return color;
 }
 
+function setupGilder(x, y){
+    grid[x][y] = 1;
+    grid[x][y+1] = 1;
+    grid[x+1][y] = 1;
+    grid[x+1][y+1] = 1;
+    grid[x+10][y] = 1;
+    grid[x+10][y+1] = 1;
+    grid[x+10][y+2] = 1;
+    grid[x+11][y-1] = 1;
+    grid[x+11][y+3] = 1;
+    grid[x+12][y-2] = 1;
+    grid[x+12][y+4] = 1;
+    grid[x+13][y-2] = 1;
+    grid[x+13][y+4] = 1;
+    grid[x+14][y+1] = 1;
+    grid[x+15][y-1] = 1;
+    grid[x+15][y+3] = 1;
+    grid[x+16][y] = 1;
+    grid[x+16][y+1] = 1;
+    grid[x+16][y+2] = 1;
+    grid[x+17][y+1] = 1;
+    grid[x+20][y-2] = 1;
+    grid[x+20][y-1] = 1;
+    grid[x+20][y] = 1;
+    grid[x+21][y-2] = 1;
+    grid[x+21][y-1] = 1;
+    grid[x+21][y] = 1;
+    grid[x+22][y-3] = 1;
+    grid[x+22][y+1] = 1;
+    grid[x+24][y-4] = 1;
+    grid[x+24][y-3] = 1;
+    grid[x+24][y+1] = 1;
+    grid[x+24][y+2] = 1;
+    grid[x+34][y-2] = 1;
+    grid[x+34][y-1] = 1;
+    grid[x+35][y-2] = 1;
+    grid[x+35][y-1] = 1;
+}
+
 // Setup the GOL grid
 function initialiseGOL() {
+    restartCounter++;
     color1 = getRandomColor();
     color2 = invertColor(color1);
-    // Set starting pattern
-    for (var i = 0; i < grid.length; i++) {
-        for (var j = 0; j < grid[0].length; j++) {
-            grid[i][j] = Math.floor(Math.random() * 3);
+
+    if (restartCounter % 3 == 0) {
+        for (var i = 0; i < grid.length; i++) {
+            grid[i] = new Array(gridSize).fill(0);
+        }
+        var startY = 18
+        var startX = 8
+        for (var x = startX; x < grid[0].length; x += numberOfColumns/5){
+            for (var y = startY; y < grid.length; y += 100){
+                setupGilder(x, y);
+            }
+        }
+    } else {
+        // Set random starting pattern
+        for (var i = 0; i < grid.length; i++) {
+            for (var j = 0; j < grid[0].length; j++) {
+                grid[i][j] = Math.floor(Math.random() * 3);
+            }
         }
     }
 }
