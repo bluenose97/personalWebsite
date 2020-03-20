@@ -4,6 +4,8 @@
           height: 100%;
           background-color: black;
           z-index: -999;
+          text-align: center;
+          font-family: "Courier New", Courier, monospace;
       }
 
       canvas {
@@ -23,9 +25,7 @@
           -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
           z-index: 10;
-          font-family: "Courier New", Courier, monospace;
           color: #ffffff;
-          text-align: center;
           background: rgba(0, 0, 0, 0.5);
           border-radius: 40px;
       }
@@ -67,4 +67,23 @@
 
       a:hover {
           color: #83b9ff;
+      }
+
+      #restartGOL{
+        position: fixed;
+        bottom: 20px;
+        left: 50%;
+        -webkit-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+        background-color: rgba(0, 0, 0, 0.5);
+        color: white;
+        transition: linear 0.4s;
+        font-family: "Courier New", Courier, monospace;
+        font-size: 16px;
+        font-weight: 600;
+        outline: none;
+        padding: 15px;
+      }
+      #restartGOL:hover{
+        background-color: rgba(88, 146, 221, 0.5);
       }

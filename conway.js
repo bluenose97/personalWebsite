@@ -16,51 +16,44 @@ for (var i = 0; i < neighbourStore.length; i++) {
 }
 
 
+function invertColor(hex) {
+    if (hex.indexOf('#') === 0) {
+        hex = hex.slice(1);
+    }
+    // convert 3-digit hex to 6-digits.
+    if (hex.length === 3) {
+        hex = hex[0] + hex[0] + hex[1] + hex[1] + hex[2] + hex[2];
+    }
+    if (hex.length !== 6) {
+        throw new Error('Invalid HEX color.');
+    }
+    // invert color components
+    var r = (255 - parseInt(hex.slice(0, 2), 16)).toString(16),
+        g = (255 - parseInt(hex.slice(2, 4), 16)).toString(16),
+        b = (255 - parseInt(hex.slice(4, 6), 16)).toString(16);
+    // pad each with zeros and return
+    return '#' + padZero(r) + padZero(g) + padZero(b);
+}
+
+function getRandomColor() {
+    var letters = '0123456789ABCDEF';
+    var color = '#';
+    for (var i = 0; i < 6; i++) {
+        color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+}
+
 // Setup the GOL grid
 function initialiseGOL() {
+    color1 = getRandomColor();
+    color2 = invertColor(color1);
     // Set starting pattern
     for (var i = 0; i < grid.length; i++) {
         for (var j = 0; j < grid[0].length; j++) {
             grid[i][j] = Math.floor(Math.random() * 3);
         }
     }
-
-    // grid[8][18] = 1;
-    // grid[8][19] = 1;
-    // grid[9][18] = 1;
-    // grid[9][19] = 1;
-    // grid[18][18] = 1;
-    // grid[18][19] = 1;
-    // grid[18][20] = 1;
-    // grid[19][17] = 1;
-    // grid[19][21] = 1;
-    // grid[20][16] = 1;
-    // grid[20][22] = 1;
-    // grid[21][16] = 1;
-    // grid[21][22] = 1;
-    // grid[22][19] = 1;
-    // grid[23][17] = 1;
-    // grid[23][21] = 1;
-    // grid[24][18] = 1;
-    // grid[24][19] = 1;
-    // grid[24][20] = 1;
-    // grid[25][19] = 1;
-    // grid[28][16] = 1;
-    // grid[28][17] = 1;
-    // grid[28][18] = 1;
-    // grid[29][16] = 1;
-    // grid[29][17] = 1;
-    // grid[29][18] = 1;
-    // grid[30][15] = 1;
-    // grid[30][19] = 1;
-    // grid[32][14] = 1;
-    // grid[32][15] = 1;
-    // grid[32][19] = 1;
-    // grid[32][20] = 1;
-    // grid[42][16] = 1;
-    // grid[42][17] = 1;
-    // grid[43][16] = 1;
-    // grid[43][17] = 1;
 }
 
 initialiseGOL();
@@ -131,36 +124,6 @@ function padZero(str, len) {
     var zeros = new Array(len).join('0');
     return (zeros + str).slice(-len);
 }
-
-function invertColor(hex) {
-    if (hex.indexOf('#') === 0) {
-        hex = hex.slice(1);
-    }
-    // convert 3-digit hex to 6-digits.
-    if (hex.length === 3) {
-        hex = hex[0] + hex[0] + hex[1] + hex[1] + hex[2] + hex[2];
-    }
-    if (hex.length !== 6) {
-        throw new Error('Invalid HEX color.');
-    }
-    // invert color components
-    var r = (255 - parseInt(hex.slice(0, 2), 16)).toString(16),
-        g = (255 - parseInt(hex.slice(2, 4), 16)).toString(16),
-        b = (255 - parseInt(hex.slice(4, 6), 16)).toString(16);
-    // pad each with zeros and return
-    return '#' + padZero(r) + padZero(g) + padZero(b);
-}
-
-function getRandomColor() {
-    var letters = '0123456789ABCDEF';
-    var color = '#';
-    for (var i = 0; i < 6; i++) {
-        color += letters[Math.floor(Math.random() * 16)];
-    }
-    return color;
-}
-color1 = getRandomColor();
-color2 = invertColor(color1);
 
 function render() {
     stepGOL();
