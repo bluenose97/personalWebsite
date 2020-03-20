@@ -1,5 +1,5 @@
 var ctx = document.querySelector("canvas").getContext("2d");
-var numberOfColumns = 900;
+var numberOfColumns = 780;
 var gridSize = numberOfColumns * 2;
 var restartCounter = 0;
 
@@ -90,14 +90,14 @@ function initialiseGOL() {
     color1 = getRandomColor();
     color2 = invertColor(color1);
 
-    if (restartCounter % 3 == 0) {
+    if (restartCounter % 4 == 0) {
         for (var i = 0; i < grid.length; i++) {
             grid[i] = new Array(gridSize).fill(0);
         }
         var startY = 18
         var startX = 8
         for (var x = startX; x < grid[0].length; x += numberOfColumns/5){
-            for (var y = startY; y < grid.length; y += 100){
+            for (var y = startY; y < grid.length; y += numberOfColumns/8){
                 setupGilder(x, y);
             }
         }
