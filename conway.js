@@ -1,5 +1,5 @@
 var ctx = document.querySelector("canvas").getContext("2d");
-var numberOfColumns = 500;
+var numberOfColumns = 900;
 var gridSize = numberOfColumns * 2;
 
 // Initialise the grid
@@ -132,7 +132,7 @@ function render() {
     new Promise((resolve) => setTimeout(resolve, 5000));
     var w = ctx.canvas.width;
     var h = ctx.canvas.height;
-    var cellSize = Math.round(h / numberOfColumns);
+    var cellSize = Math.round(w / numberOfColumns);
     var numberOfRows = Math.round(h / cellSize);
     var hw = w / 2;
     var hh = h / 2;
@@ -143,7 +143,7 @@ function render() {
     ctx.fillStyle = grd;
 
     ctx.translate(hw, hh);
-    for (var i = 0; i < (numberOfColumns * 2); ++i) {
+    for (var i = 0; i < (numberOfColumns * 1.5); ++i) {
         hh = h / 2;
         for (var j = 0; j < numberOfRows; ++j) {
             if (grid[i][j] == 1) {
