@@ -1,5 +1,8 @@
 var ctx = document.querySelector("canvas").getContext("2d");
-var numberOfColumns = 660;
+var numberOfColumns = 680;
+if (window.innerWidth < 721){
+    numberOfColumns = 400
+}
 var gridSize = numberOfColumns * 2;
 var restartCounter = 0;
 
