@@ -1,0 +1,15 @@
+---
+name: colleague
+nodes:
+
+  - name: "Person"
+    description: "Person"
+    properties:
+      - name: "name"
+        jsType: "string"
+        description: "name"
+    relationships:
+      - name: "FRIEND_OF"
+        to: "Person"
+      - name: "COLLEAGUE_OF"
+        to: "Person"
